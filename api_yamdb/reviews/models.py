@@ -2,6 +2,7 @@ from django.core.validators import (MaxValueValidator, MinValueValidator,
                                     validate_slug)
 from django.db import models
 from users.models import User
+
 from .validators import check_value_year_valid
 
 

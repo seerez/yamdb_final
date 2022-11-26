@@ -2,26 +2,24 @@ from django.core.mail import send_mail
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django.utils.crypto import get_random_string
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import (filters, mixins, permissions, status, views,
                             viewsets)
 from rest_framework.decorators import action
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from reviews.models import Category, Comments, Genre, Review, Title
+from users.models import User
 
-from reviews.models import Category, Genre, Review, Title, Comments
-
+from .filters import TitleFilter
 from .pagination import CategoryPagination, GenrePagination, TitlesPagination
-from .permissions import (AdminOrSuperuserOnly, AuthenticatedOrReadOnly,
-                          AdminOrReadOnly
-                          )
+from .permissions import (AdminOrReadOnly, AdminOrSuperuserOnly,
+                          AuthenticatedOrReadOnly)
 from .serializers import (CategorySerializer, CommentsSerializerMethod,
                           GenreSerializer, ReviewSerializer, TitlesSerializer,
                           TitlesSerializerMethod, TokenCreateSerializer,
                           UserSerializer, UserSignUpSerializer)
-from users.models import User
-from django_filters.rest_framework import DjangoFilterBackend
-from .filters import TitleFilter
 
 
 class UserSignUpViewSet(views.APIView):
