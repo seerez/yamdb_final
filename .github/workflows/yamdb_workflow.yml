@@ -6,7 +6,6 @@ on:
 
 jobs:
   tests:
-    # «Раннер» — создание изолированного окружения с последней версией Ubuntu 
     runs-on: ubuntu-latest
 
     - name: Test with flake8 and django tests
