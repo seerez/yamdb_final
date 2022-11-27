@@ -11,7 +11,7 @@ services:
       - ./.env
 
   web:
-    build: seerez/api_yamdb:latest
+    build: seerez/yamdb:latest
     restart: always
     volumes:
       - static_value:/app/static/
