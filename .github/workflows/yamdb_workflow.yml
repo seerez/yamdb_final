@@ -66,17 +66,17 @@ jobs:
             echo "Step3..."
             touch .env
             echo "Step4..."
-            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} 
             echo "Step5..."
-            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo DB_NAME=${{ secrets.DB_NAME }}
             echo "Step6..."
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }}
             echo "Step7..."
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
             echo "Step8..."
-            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }}
             echo "Step9..."
-            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }}
             echo "Step10..."
             sudo docker-compose up -d
             echo "Step11..."
