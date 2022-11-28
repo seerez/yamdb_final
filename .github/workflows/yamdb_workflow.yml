@@ -59,23 +59,25 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
-            echo "Step1..."
             sudo docker-compose stop
-            echo "Step2..."
             sudo docker-compose rm web
-            echo "Step3..."
-            echo "Step4..."
+            touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} 
-            echo "Step5..."
             echo DB_NAME=${{ secrets.DB_NAME }}
-            echo "Step6..."
             echo POSTGRES_USER=${{ secrets.POSTGRES_USER }}
-            echo "Step7..."
             echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
-            echo "Step8..."
             echo DB_HOST=${{ secrets.DB_HOST }}
-            echo "Step9..."
             echo DB_PORT=${{ secrets.DB_PORT }}
-            echo "Step10..."
             sudo docker-compose up -d
-            echo "Step11..."
+            sudo docker compose exec -T web python manage.py collectstatic --no-input
+
+  send_message:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Telegram Message Notify
+      - uses: appleboy/telegram-action@v0.1.1
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: ${{ github.workflow }} успешно выполнен!
