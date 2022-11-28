@@ -64,7 +64,6 @@ jobs:
             echo "Step2..."
             sudo docker-compose rm web
             echo "Step3..."
-            touch .env
             echo "Step4..."
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} 
             echo "Step5..."
