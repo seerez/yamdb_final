@@ -68,7 +68,7 @@ jobs:
             echo "Step2"
             sudo docker-compose rm web
             echo "Step3"
-            cp infra/.env
+            scp infra/.env seerez@192.168.1.74
             echo "Step4"
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo "Step5"
