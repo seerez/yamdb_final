@@ -68,7 +68,7 @@ jobs:
             echo "Step2"
             sudo docker-compose rm web
             echo "Step3"
-            scp yamdb_final/infra/.env seerez@192.168.1.74
+            scp yamdb_final/infra/.env seerez@51.250.85.31
             echo "Step4"
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo "Step5"
