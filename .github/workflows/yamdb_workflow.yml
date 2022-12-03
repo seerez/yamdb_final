@@ -62,11 +62,11 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
             echo "Step1"
             sudo docker-compose stop
             echo "Step2"
             sudo docker-compose rm web
+            sudo docker compose pull web
             echo "Step3"
             touch .env
             echo "Step4"
