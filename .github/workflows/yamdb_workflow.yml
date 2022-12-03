@@ -66,7 +66,7 @@ jobs:
             sudo docker-compose stop
             echo "Step2"
             sudo docker-compose rm web
-            sudo docker compose pull web
+            sudo docker-compose pull web
             echo "Step3"
             touch .env
             echo "Step4"
